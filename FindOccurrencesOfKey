@@ -1,14 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package practice;
+/*There are two methods that return the leftmost and rightmost indices of the key.
+In each method, in the base case you are left with a pair of consecutive indices with unique elements. For the leftIndex method you return the right of the two and for the rightIndex method you return the left of the two. 
 
-/**
- *
- * @author Admin
- */
+ALWAYS partition including mid.
+
+leftIndex method drives you towards the least index.
+rightIndex method drives you towards the max index.
+/* 
+
 public class FindOccurencesOfKey {
     public static void main(String[] args){
         int[] array = {1, 2, 2, 4, 4, 4, 9, 9, 10};
