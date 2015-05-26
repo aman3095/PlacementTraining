@@ -1,0 +1,64 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package practice;
+
+/**
+ *
+ * @author Admin
+ */
+public class FindOccurencesOfKey {
+    public static void main(String[] args){
+        int[] array = {1, 2, 2, 4, 4, 4, 9, 9, 10};
+        int left = leftIndex(array, 0, array.length - 1, 4);
+        int right = rightIndex(array, 0, array.length - 1, 4);
+        //System.out.println(left);
+        //System.out.println(right);
+        System.out.println("answer = "+(right - left + 1));
+    }
+    public static int leftIndex(int[] array, int l, int r, int key){
+        //System.out.println("l = "+l);
+        //System.out.println("r = "+r);
+        if(key > array[array.length - 1])
+            return -1;
+        else if(key < array[0])
+            return -1;
+        
+        if(r == l+1){
+            //System.out.println("l+1 = r");
+            return r;
+        }
+        else if(r > l){
+            int mid = l + (r - l)/2;
+            //System.out.println("mid = "+mid);
+            //System.out.println("array[mid] = "+array[mid]);
+            
+            if(key <= array[mid]){
+                return leftIndex(array, l, mid, key);
+            }
+            else 
+                return leftIndex(array, mid, r, key);
+        }
+        else 
+            return -1;
+    }
+    public static int rightIndex(int[] array, int l, int r, int key){
+        if(key > array[array.length - 1] || key < array[0])
+            return -1;
+        if(r == l+1){
+            return l;
+        }
+        else if(r > l){
+            int mid = l + (r-l)/2;
+            
+            if(key >= array[mid]){
+                return rightIndex(array, mid, r, key);
+            }
+            else
+                return rightIndex(array, l, mid, key);
+        }
+        else return -1;
+    }
+}
